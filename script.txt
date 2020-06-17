@@ -1,0 +1,1 @@
+./labelme2coco.py original_train train2020 --labels labels.txt
