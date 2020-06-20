@@ -38,7 +38,6 @@ def main():
         print('Output directory already exists:', args.output_dir)
         sys.exit(1)
     os.makedirs(args.output_dir)
-    os.makedirs(osp.join(args.output_dir, 'JPEGImages'))
     print('Creating dataset:', args.output_dir)
 
     now = datetime.datetime.now()
@@ -92,7 +91,7 @@ def main():
 
         base = osp.splitext(osp.basename(filename))[0]
         out_img_file = osp.join(
-            args.output_dir, 'JPEGImages', base + '.jpg'
+            args.output_dir, base + '.jpg'
         )
 
         img = labelme.utils.img_data_to_arr(label_file.imageData)
@@ -156,12 +155,12 @@ def main():
     with open(out_ann_file, 'w') as f:
         json.dump(data, f)
 
-    if "train" in args.output_dir:
-        os.rename("./" + args.output_dir + '/annotations.json', "./" + args.output_dir + "/instances_train2020.json")
-        shutil.move("./" + args.output_dir + '/instances_train2020.json', "./" + "annotations" + "/instances_train2020.json")
-    else:
-        os.rename("./" + args.output_dir + '/annotations.json', "./" + args.output_dir + "/instances_val2020.json")
-        shutil.move("./" + args.output_dir + '/instances_val2020.json', "./" + "annotations" + "/instances_val2020.json")
+    #if "train" in args.output_dir:
+    #    os.rename("./" + args.output_dir + '/annotations.json', "./" + args.output_dir + "/instances_train2020.json")
+    #    shutil.move("./" + args.output_dir + '/instances_train2020.json', "./" + "annotations" + "/instances_train2020.json")
+    #else:
+    #    os.rename("./" + args.output_dir + '/annotations.json', "./" + args.output_dir + "/instances_val2020.json")
+    #    shutil.move("./" + args.output_dir + '/instances_val2020.json', "./" + "annotations" + "/instances_val2020.json")
 
 if __name__ == '__main__':
     main()

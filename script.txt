@@ -1,1 +1,3 @@
-./labelme2coco.py original_train train2020 --labels labels.txt
+./labelme2coco.py original_train train_coco --labels labels.txt
+./labelme2coco.py original_val val_coco --labels labels.txt
+
